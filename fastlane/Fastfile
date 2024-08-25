@@ -1,0 +1,62 @@
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  lane :beta do
+    setup_ci if ENV['CI']
+    match(type: 'appstore')
+    update_project_team
+    update_code_signing_settings(code_sign_identity: "iPhone Distribution")
+    api_key = app_store_connect_api_key
+    current_build_number = app_store_build_number(live: false, api_key: api_key, initial_build_number: 1)
+    increment_build_number(build_number: current_build_number + 1)
+    build_app
+    upload_to_testflight(skip_waiting_for_build_processing: true, api_key: api_key)
+  end
+end
+
+platform :android do
+  lane :build do
+    setup_ci if ENV['CI']
+
+     android_get_version_name(
+        gradle_file: "app/build.gradle" # optional
+      )
+
+      android_set_version_name(
+        version_name: ENV["VERSION_NAME"],
+        gradle_file: "app/build.gradle" # optional
+      )
+
+      android_get_version_code(
+        gradle_file: "app/build.gradle" # optional
+      )
+
+      android_set_version_code(
+        version_code: ENV["VERSION_CODE"],
+        gradle_file: "app/build.gradle" # optional
+      )
+
+
+
+    gradle(
+          task: 'bundle',
+          #task: 'assemble',
+          build_type: 'Release',
+          properties: {
+                      "android.injected.signing.store.file" => "/home/runner/keystore",
+                      "android.injected.signing.store.password" => "password",
+                      "android.injected.signing.key.alias" => "key0",
+                      "android.injected.signing.key.password" => "password",
+                    }
+        )
+
+    upload_to_play_store(track: 'internal')
+  end
+
+  lane :beta do
+
+  end
+end

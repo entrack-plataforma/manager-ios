@@ -1,0 +1,2 @@
+google_cloud_bucket_name("fastlane-moviflotte")
+storage_mode("google_cloud")
