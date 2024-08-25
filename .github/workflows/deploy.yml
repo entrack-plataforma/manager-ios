@@ -1,0 +1,31 @@
+name: deploy to appstore
+on:
+  push:
+    branches:
+      - ios
+
+env:
+  APPLE_ID: ${{ vars.APPLE_ID }}
+  APP_IDENTIFIER: ${{ vars.APP_IDENTIFIER }}
+  APP_ID: ${{ vars.APP_ID }}
+  APP_NAME: ${{ vars.APP_NAME }}
+  APP_STORE_CONNECT_API_KEY_KEY: "${{vars.APP_STORE_CONNECT_API_KEY_KEY}}"
+  APP_STORE_CONNECT_API_KEY_ISSUER_ID: "${{vars.APP_STORE_CONNECT_API_KEY_ISSUER_ID}}"
+  APP_STORE_CONNECT_API_KEY_KEY_ID: "${{vars.APP_STORE_CONNECT_API_KEY_KEY_ID}}"
+  FL_PROVISIONING_PROFILE_SPECIFIER: ${{ vars.FL_PROVISIONING_PROFILE_SPECIFIER }}
+  TEAM_ID: ${{ vars.TEAM_ID }}
+  VITE_TRACCAR_SERVER: ${{ vars.VITE_TRACCAR_SERVER }}
+
+permissions:
+  contents: read
+  id-token: write
+  pages: write
+
+jobs:
+  build_ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          echo '${{ secrets.GOOGLE_CLOUD_AUTH }}' >> gc_keys.json
+          fastlane beta
