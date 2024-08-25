@@ -1,4 +1,4 @@
 apple_id("com.rastreosat.manager")
 app_name("Rastreosat")
 package_name("com.rastreosat.manager")
-app_identifier("com.rastreosat.manager")
+
