@@ -2,7 +2,7 @@ name: deploy to appstore
 on:
   push:
     branches:
-      - ios
+      - master
 
 env:
   APP_STORE_CONNECT_API_KEY_KEY: "${{vars.APP_STORE_CONNECT_API_KEY_KEY}}"
