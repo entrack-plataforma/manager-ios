@@ -115,7 +115,7 @@
 				5EE3CA2E2998757A002C86E4 /* FirebaseCrashlytics */,
 				5EE3CA302998757A002C86E4 /* FirebaseMessaging */,
 			);
-			productName = TraccarManager;
+			productName = Rastreosat;
 			productReference = CE07210F1C86EB9800D057CE /* TraccarManager.app */;
 			productType = "com.apple.product-type.application";
 		};
