@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C4C32212C7AD4BC00C3D1B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C4C32202C7AD4BC00C3D1B5 /* GoogleService-Info.plist */; };
 		5E887A2528B954D500C76583 /* SecurityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E887A2428B954D500C76583 /* SecurityManager.swift */; };
 		5EE3CA2D2998757A002C86E4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5EE3CA2C2998757A002C86E4 /* FirebaseAnalytics */; };
 		5EE3CA2F2998757A002C86E4 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5EE3CA2E2998757A002C86E4 /* FirebaseCrashlytics */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C4C32202C7AD4BC00C3D1B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5E59E82D21565CF500C9A9E3 /* TraccarManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TraccarManager.entitlements; sourceTree = "<group>"; };
 		5E887A2428B954D500C76583 /* SecurityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityManager.swift; sourceTree = "<group>"; };
 		CE07210F1C86EB9800D057CE /* TraccarManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TraccarManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +71,7 @@
 		CE0721111C86EB9800D057CE /* TraccarManager */ = {
 			isa = PBXGroup;
 			children = (
+				0C4C32202C7AD4BC00C3D1B5 /* GoogleService-Info.plist */,
 				5E59E82D21565CF500C9A9E3 /* TraccarManager.entitlements */,
 				CE0721121C86EB9800D057CE /* AppDelegate.swift */,
 				CE850DB51E18EF0A00F4F73A /* StartViewController.swift */,
@@ -128,7 +131,6 @@
 				TargetAttributes = {
 					CE07210E1C86EB9800D057CE = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = YW49KTJKFW;
 						LastSwiftMigration = 1100;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -165,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE07211D1C86EB9800D057CE /* LaunchScreen.storyboard in Resources */,
+				0C4C32212C7AD4BC00C3D1B5 /* GoogleService-Info.plist in Resources */,
 				CE07211A1C86EB9800D057CE /* Assets.xcassets in Resources */,
 				CE0721181C86EB9800D057CE /* Main.storyboard in Resources */,
 			);
@@ -283,17 +286,19 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = TraccarManager/TraccarManager.entitlements;
 				CURRENT_PROJECT_VERSION = 20;
-				DEVELOPMENT_TEAM = YW49KTJKFW;
+				DEVELOPMENT_TEAM = 57X9MD32BX;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = TraccarManager/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Rastreosat;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4.1;
+				NEW_SETTING = "";
 				OTHER_SWIFT_FLAGS = "-D FIREBASE";
-				PRODUCT_BUNDLE_IDENTIFIER = org.traccar.TraccarManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rastreosat.manager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 5.0;
@@ -414,17 +419,19 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = TraccarManager/TraccarManager.entitlements;
 				CURRENT_PROJECT_VERSION = 20;
-				DEVELOPMENT_TEAM = YW49KTJKFW;
+				DEVELOPMENT_TEAM = 57X9MD32BX;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = TraccarManager/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Rastreosat;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4.1;
+				NEW_SETTING = "";
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = org.traccar.TraccarManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rastreosat.manager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -439,17 +446,19 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = TraccarManager/TraccarManager.entitlements;
 				CURRENT_PROJECT_VERSION = 20;
-				DEVELOPMENT_TEAM = YW49KTJKFW;
+				DEVELOPMENT_TEAM = 57X9MD32BX;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = TraccarManager/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Rastreosat;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4.1;
+				NEW_SETTING = "";
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = org.traccar.TraccarManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rastreosat.manager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 5.0;

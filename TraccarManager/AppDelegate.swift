@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        UserDefaults.standard.set("https://web.rastreosat.com.br", forKey: "url")
         if UserDefaults.standard.object(forKey: "url") != nil {
             self.window = UIWindow(frame: UIScreen.main.bounds)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -34,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(onReceive(_:)), name: MainViewController.eventLogin, object: nil)
 
-        #if FIREBASE
 
         FirebaseApp.configure()
             
@@ -55,7 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         application.registerForRemoteNotifications()
 
-        #endif
 
         return true
     }
