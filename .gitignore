@@ -1,3 +1,6 @@
 xcuserdata/
 xcshareddata/
 .DS_Store
+gc_keys.json
+fastlane/report.xml
+/.idea
