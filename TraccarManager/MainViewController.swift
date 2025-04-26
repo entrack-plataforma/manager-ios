@@ -18,16 +18,17 @@ import UIKit
 import WebKit
 
 class MainViewController: UIViewController, WKUIDelegate {
-    
+
     static let eventLogin = Notification.Name("eventLogin")
     static let eventToken = Notification.Name("eventToken")
     static let eventEvent = Notification.Name("eventEvent")
     static let keyToken = "keyToken"
     static let keyEventId = "keyEventId"
-    
+
     var webView: WKWebView!
     var initialized = false
     var pendingEventId: String? = nil
+    var loadingSpinner: UIActivityIndicatorView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,23 +69,23 @@ class MainViewController: UIViewController, WKUIDelegate {
                 }
             }
         }
-        
+
         self.webView = WKWebView(frame: viewFrame, configuration: webConfiguration)
         self.webView.uiDelegate = self
         self.webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
+
         view.addSubview(self.webView)
-        
+
         group.notify(queue: DispatchQueue.main) {
             self.initialized = true
             self.loadPage()
         }
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(onTerminate(_:)), name: UIApplication.willResignActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onReceive(_:)), name: MainViewController.eventToken, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onEvent(_:)), name: MainViewController.eventEvent, object: nil)
     }
-    
+
     private func loadPage() {
         if let urlString = UserDefaults.standard.object(forKey: "url") as? String {
             var urlComponents = URLComponents(string: urlString)
@@ -97,7 +98,7 @@ class MainViewController: UIViewController, WKUIDelegate {
             }
         }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: MainViewController.eventEvent, object: nil)
@@ -133,10 +134,73 @@ class MainViewController: UIViewController, WKUIDelegate {
 }
 
 extension MainViewController : WKScriptMessageHandler {
-    
+
+    func createFullPdf(of fileName: String, webView: WKWebView, completion: @escaping (URL?) -> Void) {
+        let printFormatter = webView.viewPrintFormatter()
+        let renderer = UIPrintPageRenderer()
+        renderer.addPrintFormatter(printFormatter, startingAtPageAt: 0)
+
+        let page = CGRect(x: 0, y: 0, width: 595.2, height: 841.8) // A4 size in points
+        let printable = page.insetBy(dx: 20, dy: 20) // Small margin if you want
+
+        renderer.setValue(page, forKey: "paperRect")
+        renderer.setValue(printable, forKey: "printableRect")
+
+        let data = NSMutableData()
+        UIGraphicsBeginPDFContextToData(data, page, nil)
+
+        for i in 0..<renderer.numberOfPages {
+            UIGraphicsBeginPDFPage()
+            renderer.drawPage(at: i, in: UIGraphicsGetPDFContextBounds())
+        }
+
+        UIGraphicsEndPDFContext()
+
+        let tempUrl = FileManager.default.temporaryDirectory.appendingPathComponent(fileName)
+        do {
+            try data.write(to: tempUrl)
+            completion(tempUrl)
+        } catch {
+            print("Failed to save PDF: \(error)")
+            completion(nil)
+        }
+    }
+
+
+    func showLoadingSpinner() {
+        if #available(iOS 13.0, *) {
+            loadingSpinner = UIActivityIndicatorView(style: .large)
+        }
+        if let spinner = loadingSpinner {
+            spinner.center = view.center
+            spinner.startAnimating()
+            view.addSubview(spinner)
+        }
+    }
+
+    func hideLoadingSpinner() {
+        loadingSpinner?.stopAnimating()
+        loadingSpinner?.removeFromSuperview()
+        loadingSpinner = nil
+    }
+
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if let body = message.body as? String {
-            if body.starts(with: "login") {
+            if body.starts(with: "print") {
+                if body.count > 6 {
+                    showLoadingSpinner()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        let fileName = String(body[body.index(body.startIndex, offsetBy: 6)...])
+                        self.createFullPdf(of: fileName, webView: self.webView) { url in
+                            if let url = url {
+                                let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                                self.present(activityVC, animated: true)
+                            }
+                            self.hideLoadingSpinner()
+                        }
+                    }
+                }
+            } else if body.starts(with: "login") {
                 if body.count > 6 {
                     let token = String(body[body.index(body.startIndex, offsetBy: 6)...])
                     SecurityManager.shared.saveToken(token)
@@ -158,5 +222,5 @@ extension MainViewController : WKScriptMessageHandler {
             }
         }
     }
-    
+
 }
