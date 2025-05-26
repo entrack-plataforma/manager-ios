@@ -115,7 +115,7 @@
 				5EE3CA2E2998757A002C86E4 /* FirebaseCrashlytics */,
 				5EE3CA302998757A002C86E4 /* FirebaseMessaging */,
 			);
-			productName = Rastreosat;
+			productName = TSRastrear;
 			productReference = CE07210F1C86EB9800D057CE /* TraccarManager.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -291,7 +291,7 @@
 				DEVELOPMENT_TEAM = 57X9MD32BX;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = TraccarManager/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Rastreosat;
+				INFOPLIST_KEY_CFBundleDisplayName = TSRastrear;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,7 +300,7 @@
 				MARKETING_VERSION = 4.1;
 				NEW_SETTING = "";
 				OTHER_SWIFT_FLAGS = "-D FIREBASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rastreosat.manager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tsrastrear.manager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 5.0;
@@ -426,7 +426,7 @@
 				DEVELOPMENT_TEAM = 57X9MD32BX;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = TraccarManager/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Rastreosat;
+				INFOPLIST_KEY_CFBundleDisplayName = TSRastrear;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -435,7 +435,7 @@
 				MARKETING_VERSION = 4.1;
 				NEW_SETTING = "";
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rastreosat.manager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tsrastrear.manager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -455,7 +455,7 @@
 				DEVELOPMENT_TEAM = 57X9MD32BX;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = TraccarManager/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Rastreosat;
+				INFOPLIST_KEY_CFBundleDisplayName = TSRastrear;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -464,7 +464,7 @@
 				MARKETING_VERSION = 4.1;
 				NEW_SETTING = "";
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rastreosat.manager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tsrastrear.manager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 5.0;

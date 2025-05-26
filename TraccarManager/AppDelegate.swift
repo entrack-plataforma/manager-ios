@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        UserDefaults.standard.set("https://web.rastreosat.com.br", forKey: "url")
+        UserDefaults.standard.set("https://web.tsrastrear.com", forKey: "url")
         if UserDefaults.standard.object(forKey: "url") != nil {
             self.window = UIWindow(frame: UIScreen.main.bounds)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
