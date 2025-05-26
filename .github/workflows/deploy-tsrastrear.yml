@@ -1,0 +1,26 @@
+name: deploy to appstore
+on:
+  push:
+    branches:
+      - tsrastrear
+
+env:
+  APP_STORE_CONNECT_API_KEY_KEY: "${{vars.APP_STORE_CONNECT_API_KEY_KEY}}"
+  APP_STORE_CONNECT_API_KEY_ISSUER_ID: "${{vars.APP_STORE_CONNECT_API_KEY_ISSUER_ID}}"
+  APP_STORE_CONNECT_API_KEY_KEY_ID: "${{vars.APP_STORE_CONNECT_API_KEY_KEY_ID}}"
+  FL_PROVISIONING_PROFILE_SPECIFIER: ${{ vars.FL_PROVISIONING_PROFILE_SPECIFIER }}
+  FASTLANE_APP_IDENTIFIER: com.tsrastrear.manager
+
+permissions:
+  contents: read
+  id-token: write
+  pages: write
+
+jobs:
+  build_ios:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          echo '${{ secrets.GOOGLE_CLOUD_AUTH }}' >> gc_keys.json
+          fastlane beta
