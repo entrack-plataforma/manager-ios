@@ -1,3 +1,4 @@
+team_id("57X9MD32BX")
 google_cloud_bucket_name("fastlane-moviflotte")
 storage_mode("google_cloud")
 app_identifier("com.tsrastrear.manager")
